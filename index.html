@@ -3,10 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <title>PoC CVE-2023-38600</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2em;
+    }
+    #resultado {
+      margin-top: 1em;
+      padding: 1em;
+      border: 1px solid #ccc;
+      background-color: #f9f9f9;
+    }
+    .vulnerable {
+      color: red;
+      font-weight: bold;
+    }
+    .no-vulnerable {
+      color: green;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
   <h1>PoC CVE-2023-38600</h1>
-  <button onclick="ejecutarPoC()">open PoC</button>
+  <p>
+    Esta prueba de concepto verifica si el navegador es vulnerable a la vulnerabilidad CVE-2023-38600,
+    relacionada con un desbordamiento de enteros en el método <code>copyWithin</code> de los <code>TypedArray</code>.
+  </p>
+  <button onclick="ejecutarPoC()">Iniciar PoC</button>
+  <div id="resultado">
+    <p><strong>Procedimiento:</strong></p>
+    <ol>
+      <li>Crear un <code>ArrayBuffer</code> redimensionable de 0x1000 bytes.</li>
+      <li>Crear un <code>Uint8Array</code> basado en el buffer.</li>
+      <li>Definir una función que reduce el tamaño del buffer a cero.</li>
+      <li>Invocar <code>copyWithin</code> con un objeto que tiene <code>valueOf</code> para manipular el buffer durante la operación.</li>
+    </ol>
+    <p id="mensaje"></p>
+  </div>
 
   <script src="poc.js"></script>
 </body>
